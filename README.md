@@ -4,6 +4,8 @@ Personal portfolio for **Uday Kiran Konchada**, a senior full-stack .NET develop
 
 **Repository:** [github.com/UdaykiranDev/konchada-uday-kiran](https://github.com/UdaykiranDev/konchada-uday-kiran)
 
+**Live site:** [udaykirandev.github.io/konchada-uday-kiran](https://udaykirandev.github.io/konchada-uday-kiran/)
+
 ## Portfolio contents
 
 - **Introduction** — professional headline, short summary, portrait, and links to the profile and contact sections.
@@ -78,4 +80,10 @@ npm run build
 npm run preview
 ```
 
-The generated static site is in `dist/`. Deploy that directory to a static web host. If deploying to GitHub Pages under a repository subpath rather than a custom domain or root path, configure Vite's `base` option for that subpath before building.
+The generated static site is in `dist/`. Pushing to `master` or manually starting the **Deploy portfolio to GitHub Pages** workflow builds the site and deploys it. Vite's base path and the asset URLs are configured for the project Pages URL above.
+
+To enable Pages for this repository, open **Settings → Pages** on GitHub and set **Build and deployment → Source** to **GitHub Actions**. The workflow requires the repository's Pages and Actions settings to allow deployments.
+
+### Profile README
+
+GitHub displays a separate profile README from the public repository named exactly after the GitHub username: [`UdaykiranDev`](https://github.com/UdaykiranDev/Udaykiran). It is rendered directly on the profile and does not use GitHub Pages. The portfolio site is linked above.

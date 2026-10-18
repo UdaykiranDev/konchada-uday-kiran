@@ -36,9 +36,11 @@ const jobs = [
 ]
 
 const projects = [
-  { name: 'Manarural', title: 'Wellness & Lifestyle Brand', stack: 'React.js, Vite, Responsive UI, Deployment', description: 'Built a polished product showcase for a lifestyle brand focused on natural wellness and modern consumer engagement.', site: 'https://udaykirandev.github.io/manarural/', badge: 'Live', thumbnail: '/images/ManaRural.png' },
-  { name: 'EventBazar', title: 'Event Discovery Platform', stack: 'React.js, UI Components, Responsive Layout, Deployment', description: 'Created a clean event landing experience with a browsing-first layout that highlights featured experiences and clear conversions.', site: 'https://udaykirandev.github.io/eventbazar/', badge: 'Live', thumbnail: '/images/EventBazar.png' },
+  { name: 'Manarural', title: 'Wellness & Lifestyle Brand', stack: 'React.js, Vite, Responsive UI, Deployment', description: 'Built a polished product showcase for a lifestyle brand focused on natural wellness and modern consumer engagement.', site: 'https://udaykirandev.github.io/manarural/', badge: 'Live', thumbnail: 'images/ManaRural.png' },
+  { name: 'EventBazar', title: 'Event Discovery Platform', stack: 'React.js, UI Components, Responsive Layout, Deployment', description: 'Created a clean event landing experience with a browsing-first layout that highlights featured experiences and clear conversions.', site: 'https://udaykirandev.github.io/eventbazar/', badge: 'Live', thumbnail: 'images/EventBazar.png' },
 ]
+
+const publicAsset = (path) => `${import.meta.env.BASE_URL}${path}`
 
 const iconShapes = {
   home: <><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" /></>,
@@ -83,15 +85,15 @@ function Icon({ name, className = '' }) {
 
 function Mark({ type }) {
   const logoMap = {
-    infosys: '/images/infosys.png',
-    rig: '/images/rig.png',
-    technoxis: '/images/technoxis.png',
+    infosys: 'images/infosys.png',
+    rig: 'images/rig.png',
+    technoxis: 'images/technoxis.png',
   }
 
   return (
     <img
       className={`company-mark ${type}`}
-      src={logoMap[type]}
+      src={publicAsset(logoMap[type])}
       alt={type === 'infosys' ? 'Infosys logo' : type === 'rig' ? 'RIG logo' : 'Technoxis logo'}
       loading="lazy"
       decoding="async"
@@ -123,20 +125,18 @@ function App() {
     <div className={dark ? 'portfolio dark' : 'portfolio'}>
       <header className="header"><a href="#home" className="logo">UK<span>.</span></a><nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a><button className="theme-button" onClick={() => setDark(!dark)} aria-label={`Switch to ${dark ? 'light' : 'dark'} theme`} title={`Switch to ${dark ? 'light' : 'dark'} theme`}><Icon name={dark ? 'moon' : 'sun'} /></button></nav></header>
       <main>
-        <section className="intro" id="home"><div className="intro-text"><p className="kicker">Senior Full Stack .NET Developer <span>·</span> React | SQL Server | AWS</p><h1>Hi, I&apos;m Uday Kiran <span className="wave">👋
-          {/* <Icon name="hand" /> */}
-        </span></h1><p className="lead">Senior Full Stack .NET Developer with 9+ years of experience designing, developing, enhancing, and supporting enterprise web applications.</p>
+        <section className="intro" id="home"><div className="intro-text"><p className="kicker">Senior Full Stack .NET Developer <span>·</span> React | SQL Server | AWS</p><h1>Hi, I&apos;m Uday Kiran <span className="wave"><Icon name="hand" /></span></h1><p className="lead">Senior Full Stack .NET Developer with 9+ years of experience designing, developing, enhancing, and supporting enterprise web applications.</p>
         <div className="intro-links"><a href="#about">View profile  
           <b><Icon name="arrowDown" /></b>
-          </a><a href="#contact" className="outline-link">Let&apos;s talk <b><Icon name="arrowUpRight" /></b></a></div></div><img className="avatar" src="/images/cropped_circle_image.png" alt="Uday Kiran Konchada" /></section>
+          </a><a href="#contact" className="outline-link">Let&apos;s talk <b><Icon name="arrowUpRight" /></b></a></div></div><img className="avatar" src={publicAsset('images/cropped_circle_image.png')} alt="Uday Kiran Konchada" /></section>
 
         <section className="about content-section" id="about"><div className="section-title"><span>01</span><h2>Professional Summary</h2></div><div className="about-body"><p>Senior Full Stack .NET Developer with 9+ years of experience designing, developing, enhancing, and supporting enterprise web applications using <strong>C#, ASP.NET MVC, .NET Core, Web API, SQL Server, Entity Framework, React.js, and AWS</strong>. Experienced in RESTful API development, backend business logic, database development, dependency injection, production troubleshooting, and end-to-end application delivery. Currently working as a Technology Lead at Infosys, contributing to React.js and AWS-based enterprise applications. Experienced in Agile delivery, requirement analysis, client collaboration, production support, and implementation of business-critical features.</p><div className="availability"><span className="status-dot"></span><span>Senior developer · Enterprise applications · Hyderabad</span></div></div><h3 className="subheading">Core Expertise</h3><div className="expertise">{expertise.map((item) => <span key={item}>{item}</span>)}</div><h3 className="subheading">Technical Skills</h3><div className="skill-groups">{skillGroups.map(([label, value]) => <div className="skill-group" key={label}><h3>{label}</h3><p>{value}</p></div>)}</div></section>
 
         <section className="work content-section" id="work"><div className="section-title"><span>02</span><h2>Professional Experience</h2></div><div className="jobs">{jobs.map((job) => { const isExpanded = Boolean(expandedJobs[job.type]); const isVisible = isExpanded || hoveredJob === job.type; const summaryId = `job-summary-${job.type}`; return <article className={`job detailed-job${isVisible ? ' is-open' : ''}`} key={job.company} onMouseEnter={() => setHoveredJob(job.type)} onMouseLeave={() => setHoveredJob(null)}><Mark type={job.type} /><div className="job-main"><div className="job-heading"><button className="job-toggle" type="button" aria-label={isExpanded ? 'Hide experience summary' : 'Show experience summary'} title={isExpanded ? 'Hide experience summary' : 'Show experience summary'} aria-expanded={isVisible} aria-controls={summaryId} onClick={() => setExpandedJobs((current) => ({ ...current, [job.type]: !current[job.type] }))}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="job-toggle-icon" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg></button><h3>{job.company}</h3><span className="tag">{job.role}</span><span className="tag job-location">{job.place}</span></div>{isVisible && <p className="job-summary" id={summaryId}>{job.summary}</p>}</div><time>{job.date}</time></article> })}</div></section>
 
-        <section className="projects content-section" id="projects"><div className="section-title"><span>03</span><h2>My Projects</h2></div><p className="projects-intro">I&apos;ve worked on a variety of projects, from simple websites to complex web applications. Here are a few of my individual projects.</p><div className="project-grid">{projects.map((project) => <article className="project-card" key={project.name}><div className="project-thumb"><img className="project-thumb-image" src={project.thumbnail} alt={`${project.name} website preview`} loading="lazy" decoding="async" /><span className="project-badge">{project.badge}</span><span className="project-thumb-label">{project.name}</span></div><div className="project-card-body"><h3>{project.name}</h3><p className="project-title">{project.title}</p><p className="project-stack"><strong>Tech Stack:</strong> {project.stack}</p><p>{project.description}</p><a href={project.site} target="_blank" rel="noreferrer" className="project-link">Website</a></div></article>)}</div></section>
+        <section className="projects content-section" id="projects"><div className="section-title"><span>03</span><h2>My Projects</h2></div><p className="projects-intro">I&apos;ve worked on a variety of projects, from simple websites to complex web applications. Here are a few of my individual projects.</p><div className="project-grid">{projects.map((project) => <article className="project-card" key={project.name}><div className="project-thumb"><img className="project-thumb-image" src={publicAsset(project.thumbnail)} alt={`${project.name} website preview`} loading="lazy" decoding="async" /><span className="project-badge">{project.badge}</span><span className="project-thumb-label">{project.name}</span></div><div className="project-card-body"><h3>{project.name}</h3><p className="project-title">{project.title}</p><p className="project-stack"><strong>Tech Stack:</strong> {project.stack}</p><p>{project.description}</p><a href={project.site} target="_blank" rel="noreferrer" className="project-link">Website</a></div></article>)}</div></section>
 
-        <section className="education content-section" id="education"><div className="section-title"><span>04</span><h2>Education</h2></div><div className="education-list"><article className="education-row"><img className="school-logo" src="/images/sitm.png" alt="SITM logo" /><div><h3>Bachelor of Technology - Electronics & Communication Engineering</h3><p>Sarada Institute of Science, Technology & Management (JNTU-K), Srikakulam</p></div><time>2015</time></article></div><h3 className="subheading learning-title">Additional Learning</h3><ul className="learning-list"><li>AWS: Hands-on production experience with AWS Serverless.</li><li>React.js: Hands-on production experience with component-based UI development, hooks, state management, and application integration.</li></ul></section>
+        <section className="education content-section" id="education"><div className="section-title"><span>04</span><h2>Education</h2></div><div className="education-list"><article className="education-row"><img className="school-logo" src={publicAsset('images/sitm.png')} alt="SITM logo" /><div><h3>Bachelor of Technology - Electronics & Communication Engineering</h3><p>Sarada Institute of Science, Technology & Management (JNTU-K), Srikakulam</p></div><time>2015</time></article></div><h3 className="subheading learning-title">Additional Learning</h3><ul className="learning-list"><li>AWS: Hands-on production experience with AWS Serverless.</li><li>React.js: Hands-on production experience with component-based UI development, hooks, state management, and application integration.</li></ul></section>
 
         <section className="contact content-section" id="contact"><span className="contact-pill">Contact</span><h2>Get in Touch</h2><p>I&apos;m open to conversations about full-stack development, cloud-native applications, and new opportunities.</p>
         
