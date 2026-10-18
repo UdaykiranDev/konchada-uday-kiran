@@ -1,16 +1,81 @@
-# React + Vite
+# Uday Kiran — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio for **Uday Kiran Konchada**, a senior full-stack .NET developer based in Hyderabad, India. The site presents professional experience, technical skills, education, selected projects, and ways to get in touch.
 
-Currently, two official plugins are available:
+**Repository:** [github.com/UdaykiranDev/konchada-uday-kiran](https://github.com/UdaykiranDev/konchada-uday-kiran)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Portfolio contents
 
-## React Compiler
+- **Introduction** — professional headline, short summary, portrait, and links to the profile and contact sections.
+- **Professional summary** — development background, core expertise, and grouped technical skills.
+- **Experience** — roles at Infosys, RIG Enterprise Applications (OnBlick), and Technoxis.
+- **Projects** — Manarural and EventBazar, with screenshots, descriptions, technology stacks, and links to their websites.
+- **Education** — Bachelor of Technology in Electronics & Communication Engineering and additional learning.
+- **Contact** — email and social profile links.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The interface includes responsive layouts, light/dark themes, SVG icons, hover and keyboard-focus labels, and a floating quick-navigation bar.
 
-## Expanding the Oxlint configuration
+## Built with
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- React 19
+- Vite 8
+- JavaScript and JSX
+- CSS
+- Oxlint
+
+## Requirements
+
+- Node.js **20.19+** or **22.12+**
+- npm (included with Node.js)
+
+## Run locally
+
+```bash
+git clone https://github.com/UdaykiranDev/konchada-uday-kiran.git
+cd konchada-uday-kiran
+npm install
+npm run dev
+```
+
+Open the local URL printed by Vite (normally [http://localhost:5173](http://localhost:5173)).
+
+## Available commands
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server with hot module replacement. |
+| `npm run lint` | Run Oxlint on the project. |
+| `npm run build` | Create an optimized production build in `dist/`. |
+| `npm run preview` | Serve the production build locally for review. Run `npm run build` first. |
+
+## Project structure
+
+```text
+public/
+  images/         Portrait, company and school logos, project previews
+  favicon*        Browser and device icons
+src/
+  App.jsx         Portfolio content, sections, navigation, and interactions
+  App.css         Page layout, components, responsive styles, and motion
+  index.css       Global styles and typography
+  main.jsx        React application entry point
+index.html        HTML shell, page title, and search/social metadata
+```
+
+## Updating the portfolio
+
+- Edit the profile text, skills, experience, project details, social URLs, and section links in [`src/App.jsx`](./src/App.jsx).
+- Replace images in [`public/images`](./public/images) while keeping the referenced filenames, or update the corresponding image paths in `src/App.jsx`.
+- Adjust colors, layout, responsive breakpoints, and interaction styles in [`src/App.css`](./src/App.css) and [`src/index.css`](./src/index.css).
+- Update the browser title, description, and social-sharing metadata in [`index.html`](./index.html).
+
+## Production build and deployment
+
+Run the following to create and inspect the production build:
+
+```bash
+npm run build
+npm run preview
+```
+
+The generated static site is in `dist/`. Deploy that directory to a static web host. If deploying to GitHub Pages under a repository subpath rather than a custom domain or root path, configure Vite's `base` option for that subpath before building.
